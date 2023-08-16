@@ -23,7 +23,7 @@ class _HadethViewState extends State<HadethView> {
             color: theme.canvasColor,
             thickness: 2,
           ),
-          Text(
+           Text(
             'الأحاديث',
             style: theme.textTheme.bodyMedium,
           ),

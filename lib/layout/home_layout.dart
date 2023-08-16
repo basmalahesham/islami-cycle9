@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/core/style/app_theme.dart';
 import 'package:islami/moduls/hadeth/hadeth_view.dart';
 import 'package:islami/moduls/quran/quran_view.dart';
@@ -39,8 +40,8 @@ class _HomeLayoutState extends State<HomeLayout> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: const Text(
-            'Islami',
+          title: Text(
+            AppLocalizations.of(context)!.islami,
           ),
         ),
         body: screenWidgets[selectedIndex],
@@ -51,34 +52,34 @@ class _HomeLayoutState extends State<HomeLayout> {
               selectedIndex = index;
             });
           },
-          items: const [
+          items: [
             BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage('assets/images/icon_quran.png'),
               ),
-              label: "Quran",
+              label: AppLocalizations.of(context)!.quran,
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage('assets/images/icon_hadeth.png'),
               ),
-              label: "Hadeth",
+              label: AppLocalizations.of(context)!.hadeth,
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage('assets/images/icon_sebha.png'),
               ),
-              label: "Tasbeh",
+              label: AppLocalizations.of(context)!.tasbeh,
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage('assets/images/icon_radio.png'),
               ),
-              label: "Radio",
+              label: AppLocalizations.of(context)!.radio,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),
-              label: "Settings",
+              label: AppLocalizations.of(context)!.settings,
             ),
           ],
         ),
