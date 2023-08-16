@@ -9,7 +9,7 @@ class SuraTitleHeaderWidget extends StatelessWidget {
     return Column(
       children: [
         Divider(
-          color: theme.primaryColor,
+          color: theme.canvasColor,
           thickness: 2,
           // height: 0,  // عشان لو حبيت اشيل المسافة بين الديفيدر والكونتينر
         ),
@@ -20,31 +20,25 @@ class SuraTitleHeaderWidget extends StatelessWidget {
               child: Text(
                 'رقم السورة',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w400,
-                ),
+                style: theme.textTheme.bodyMedium,
               ),
             ),
             Container(
               width: 2,
               height: 40,
-              color: theme.primaryColor,
+              color: theme.canvasColor,
             ),
             Expanded(
               child: Text(
                 'اسم السورة',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w400,
-                ),
+                style: theme.textTheme.bodyMedium,
               ),
             ),
           ],
         ),
         Divider(
-          color: theme.primaryColor,
+          color: theme.canvasColor,
           thickness: 2,
         ),
       ],

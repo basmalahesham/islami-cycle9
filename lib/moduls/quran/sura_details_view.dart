@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:islami/moduls/quran/widgets/suraName_widget.dart';
 import 'package:islami/moduls/quran/widgets/verses_widgets.dart';
 
+import '../../core/style/app_theme.dart';
+
 class SuraDetailsView extends StatefulWidget {
   SuraDetailsView({super.key});
 
@@ -25,7 +27,11 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/images/default_bg.png'),
+            image: AssetImage(
+              AppTheme.themeMode != ThemeMode.dark
+                  ? 'assets/images/default_bg.png'
+                  : 'assets/images/dark_bg.png',
+            ),
             fit: BoxFit.fill),
       ),
       child: Scaffold(
@@ -46,7 +52,9 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
             top: 40,
           ),
           decoration: BoxDecoration(
-            color: Color(0xFFF8F8F8).withOpacity(0.8),
+            color: AppTheme.themeMode != ThemeMode.dark
+                ? const Color(0xFFF8F8F8).withOpacity(0.75)
+                : const Color(0xFF141A2E).withOpacity(0.75),
             borderRadius: BorderRadius.circular(25),
           ),
           child: Column(
@@ -57,19 +65,25 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
                 children: [
                   Text(
                     'سورة ${args.suraName}',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
+                    style: theme.textTheme.bodyMedium!.copyWith(
+                      color: AppTheme.themeMode != ThemeMode.dark
+                          ? Colors.black
+                          : theme.canvasColor,
                     ),
                   ),
                   const SizedBox(
                     width: 10,
                   ),
-                  const Icon(Icons.play_circle),
+                  Icon(
+                    Icons.play_circle,
+                    color: AppTheme.themeMode != ThemeMode.dark
+                        ? Colors.black
+                        : theme.canvasColor,
+                  ),
                 ],
               ),
               Divider(
-                color: theme.primaryColor,
+                color: theme.canvasColor,
                 thickness: 1.5,
                 indent: 40,
                 endIndent: 40,

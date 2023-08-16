@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/style/app_theme.dart';
+
 class VersesWidgets extends StatelessWidget {
   String content;
   int index;
@@ -8,6 +10,7 @@ class VersesWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.symmetric(
         vertical: 8,
@@ -16,8 +19,11 @@ class VersesWidgets extends StatelessWidget {
       child: Text(
         '$content($index)',
         textDirection: TextDirection.rtl,
-        style: const TextStyle(
-          fontSize: 20,
+        style: theme.textTheme.bodySmall!.copyWith(
+          fontWeight: FontWeight.bold,
+          color: AppTheme.themeMode != ThemeMode.dark
+              ? Colors.black
+              : theme.canvasColor,
         ),
         textAlign: TextAlign.center,
       ),

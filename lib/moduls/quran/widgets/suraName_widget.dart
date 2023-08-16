@@ -30,8 +30,7 @@ class SuraNameWidget extends StatelessWidget {
               child: Text(
                 '${suraNumber + 1}',
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 24,
+                style: theme.textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -39,14 +38,13 @@ class SuraNameWidget extends StatelessWidget {
             Container(
               width: 2,
               height: 40,
-              color: theme.primaryColor,
+              color: theme.canvasColor,
             ),
             Expanded(
               child: Text(
                 suraName,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 24,
+                style: theme.textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
               ),

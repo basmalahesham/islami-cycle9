@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:islami/core/style/app_theme.dart';
 import 'package:islami/layout/home_layout.dart';
 
 class SplashView extends StatelessWidget {
@@ -14,9 +15,13 @@ class SplashView extends StatelessWidget {
       Navigator.of(context).pushReplacementNamed(HomeLayout.routeName);
     });
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/splash.png'),
+          image: AssetImage(
+            AppTheme.themeMode != ThemeMode.dark
+                ? 'assets/images/splash.png'
+                : 'assets/images/dark_splash.png',
+          ),
           fit: BoxFit.fill,
         ),
       ),

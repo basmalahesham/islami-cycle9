@@ -126,6 +126,7 @@ class _SebhaViewState extends State<SebhaView> {
 }*/
 
 import 'package:flutter/material.dart';
+import 'package:islami/core/style/app_theme.dart';
 
 class SebhaView extends StatefulWidget {
   @override
@@ -150,8 +151,13 @@ class _SebhaViewState extends State<SebhaView> {
             clipBehavior: Clip.none,
             children: [
               Positioned(
-                  top: -72,
-                  child: Image.asset('assets/images/head_sebha_logo.png')),
+                top: -72,
+                child: Image.asset(
+                  AppTheme.themeMode != ThemeMode.dark
+                      ? 'assets/images/head_sebha_logo.png'
+                      : 'assets/images/head_sebha_dark.png',
+                ),
+              ),
               InkWell(
                 onTap: () {
                   setState(() {
@@ -160,7 +166,11 @@ class _SebhaViewState extends State<SebhaView> {
                 },
                 child: Transform.rotate(
                   angle: angle,
-                  child: Image.asset('assets/images/body_sebha_logo.png'),
+                  child: Image.asset(
+                    AppTheme.themeMode != ThemeMode.dark
+                        ? 'assets/images/body_sebha_logo.png'
+                        : 'assets/images/body_sebha_dark.png',
+                  ),
                 ),
               ),
             ],
@@ -170,8 +180,7 @@ class _SebhaViewState extends State<SebhaView> {
           ),
           Text(
             'عدد التسبيحات',
-            style: TextStyle(
-              fontSize: 24,
+            style: theme.textTheme.bodyMedium!.copyWith(
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -195,8 +204,8 @@ class _SebhaViewState extends State<SebhaView> {
               },
               child: Text(
                 '$counterButton',
-                style: TextStyle(
-                  color: Colors.black,
+                style: theme.textTheme.bodyMedium!.copyWith(
+                  fontWeight: FontWeight.w400,
                 ),
               ),
             ),
@@ -207,13 +216,12 @@ class _SebhaViewState extends State<SebhaView> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              color: theme.primaryColor,
+              color: theme.canvasColor,
             ),
             padding: EdgeInsets.all(6),
             child: Text(
               'سبحان الله',
-              style: TextStyle(
-                fontSize: 24,
+              style: theme.textTheme.bodyMedium!.copyWith(
                 fontWeight: FontWeight.w400,
               ),
             ),

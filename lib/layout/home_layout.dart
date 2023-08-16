@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami/core/style/app_theme.dart';
 import 'package:islami/moduls/hadeth/hadeth_view.dart';
 import 'package:islami/moduls/quran/quran_view.dart';
 import 'package:islami/moduls/radio/radio_view.dart';
@@ -25,9 +26,13 @@ class _HomeLayoutState extends State<HomeLayout> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/default_bg.png'),
+          image: AssetImage(
+            AppTheme.themeMode != ThemeMode.dark
+                ? 'assets/images/default_bg.png'
+                : 'assets/images/dark_bg.png',
+          ),
           fit: BoxFit.fill,
         ),
       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islami/moduls/hadeth/hadeth_view.dart';
 
+import '../../core/style/app_theme.dart';
+
 class HadethDetails extends StatelessWidget {
   const HadethDetails({super.key});
 
@@ -13,7 +15,11 @@ class HadethDetails extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/images/default_bg.png'),
+            image: AssetImage(
+              AppTheme.themeMode != ThemeMode.dark
+                  ? 'assets/images/default_bg.png'
+                  : 'assets/images/dark_bg.png',
+            ),
             fit: BoxFit.fill),
       ),
       child: Scaffold(
@@ -34,7 +40,9 @@ class HadethDetails extends StatelessWidget {
             top: 40,
           ),
           decoration: BoxDecoration(
-            color: Color(0xFFF8F8F8).withOpacity(0.8),
+            color: AppTheme.themeMode != ThemeMode.dark
+                ? const Color(0xFFF8F8F8).withOpacity(0.75)
+                : const Color(0xFF141A2E).withOpacity(0.75),
             borderRadius: BorderRadius.circular(25),
           ),
           child: SingleChildScrollView(
@@ -46,19 +54,25 @@ class HadethDetails extends StatelessWidget {
                   children: [
                     Text(
                       args.title,
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
+                      style: theme.textTheme.bodyMedium!.copyWith(
+                        color: AppTheme.themeMode != ThemeMode.dark
+                            ? Colors.black
+                            : theme.canvasColor,
                       ),
                     ),
                     const SizedBox(
                       width: 10,
                     ),
-                    const Icon(Icons.play_circle),
+                    Icon(
+                      Icons.play_circle,
+                      color: AppTheme.themeMode != ThemeMode.dark
+                          ? Colors.black
+                          : theme.canvasColor,
+                    ),
                   ],
                 ),
                 Divider(
-                  color: theme.primaryColor,
+                  color: theme.canvasColor,
                   thickness: 1.5,
                   indent: 40,
                   endIndent: 40,
@@ -71,8 +85,11 @@ class HadethDetails extends StatelessWidget {
                   child: Text(
                     args.content,
                     textDirection: TextDirection.rtl,
-                    style: const TextStyle(
-                      fontSize: 20,
+                    style: theme.textTheme.bodySmall!.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: AppTheme.themeMode != ThemeMode.dark
+                          ? Colors.black
+                          : theme.canvasColor,
                     ),
                   ),
                 ),

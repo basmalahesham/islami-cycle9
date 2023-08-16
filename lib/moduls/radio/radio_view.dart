@@ -34,7 +34,7 @@ class RadioView extends StatelessWidget {
                 icon: Icon(
                   Icons.skip_previous,
                   size: 40,
-                  color: theme.primaryColor,
+                  color: theme.canvasColor,
                 ),
               ),
               IconButton(
@@ -42,7 +42,7 @@ class RadioView extends StatelessWidget {
                 icon: Icon(
                   Icons.play_arrow,
                   size: 40,
-                  color: theme.primaryColor,
+                  color: theme.canvasColor,
                 ),
               ),
               IconButton(
@@ -50,7 +50,7 @@ class RadioView extends StatelessWidget {
                 icon: Icon(
                   Icons.skip_next,
                   size: 40,
-                  color: theme.primaryColor,
+                  color: theme.canvasColor,
                 ),
               ),
             ],

@@ -13,29 +13,26 @@ class _HadethViewState extends State<HadethView> {
 
   @override
   Widget build(BuildContext context) {
-    readFile();
+    if (allHadeth.isEmpty) readFile();
     var theme = Theme.of(context);
     return Center(
       child: Column(
         children: [
           Image.asset('assets/images/hadeth_logo.png'),
           Divider(
-            color: theme.primaryColor,
+            color: theme.canvasColor,
             thickness: 2,
           ),
-          const Text(
+          Text(
             'الأحاديث',
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.w600,
-            ),
+            style: theme.textTheme.bodyMedium,
           ),
           Divider(
-            color: theme.primaryColor,
+            color: theme.canvasColor,
             thickness: 2,
           ),
           Expanded(
-            child: ListView.builder(
+            child: ListView.separated(
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
                   Navigator.pushNamed(context, HadethDetails.routeName,
@@ -44,9 +41,14 @@ class _HadethViewState extends State<HadethView> {
                 child: Text(
                   allHadeth[index].title,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 22,
-                  ),
+                  style: theme.textTheme.bodyMedium,
+                ),
+              ),
+              separatorBuilder: (context, index) => Padding(
+                padding: EdgeInsets.symmetric(horizontal: 80.0),
+                child: Divider(
+                  color: theme.canvasColor,
+                  thickness: 1.2,
                 ),
               ),
               itemCount: allHadeth.length,
