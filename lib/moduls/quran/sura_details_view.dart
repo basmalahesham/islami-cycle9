@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/moduls/quran/widgets/suraName_widget.dart';
 import 'package:islami/moduls/quran/widgets/verses_widgets.dart';
+import 'package:provider/provider.dart';
 
-import '../../core/style/app_theme.dart';
+import '../../provider/settings_provider.dart';
 
 class SuraDetailsView extends StatefulWidget {
   SuraDetailsView({super.key});
@@ -20,6 +21,7 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SettingsProvider>(context);
     var theme = Theme.of(context);
     var args = ModalRoute.of(context)!.settings.arguments as SuraDetails;
 
@@ -28,9 +30,7 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
       decoration: BoxDecoration(
         image: DecorationImage(
             image: AssetImage(
-              AppTheme.themeMode != ThemeMode.dark
-                  ? 'assets/images/default_bg.png'
-                  : 'assets/images/dark_bg.png',
+              provider.getMainBackground(),
             ),
             fit: BoxFit.fill),
       ),
@@ -52,7 +52,7 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
             top: 40,
           ),
           decoration: BoxDecoration(
-            color: AppTheme.themeMode != ThemeMode.dark
+            color: provider.currentTheme != ThemeMode.dark
                 ? const Color(0xFFF8F8F8).withOpacity(0.75)
                 : const Color(0xFF141A2E).withOpacity(0.75),
             borderRadius: BorderRadius.circular(25),
@@ -66,7 +66,7 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
                   Text(
                     'سورة ${args.suraName}',
                     style: theme.textTheme.bodyMedium!.copyWith(
-                      color: AppTheme.themeMode != ThemeMode.dark
+                      color: provider.currentTheme != ThemeMode.dark
                           ? Colors.black
                           : theme.canvasColor,
                     ),
@@ -76,7 +76,7 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
                   ),
                   Icon(
                     Icons.play_circle,
-                    color: AppTheme.themeMode != ThemeMode.dark
+                    color: provider.currentTheme != ThemeMode.dark
                         ? Colors.black
                         : theme.canvasColor,
                   ),

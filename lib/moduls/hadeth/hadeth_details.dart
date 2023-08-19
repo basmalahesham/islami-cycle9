@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islami/moduls/hadeth/hadeth_view.dart';
+import 'package:provider/provider.dart';
 
-import '../../core/style/app_theme.dart';
+import '../../provider/settings_provider.dart';
 
 class HadethDetails extends StatelessWidget {
   const HadethDetails({super.key});
@@ -10,15 +11,14 @@ class HadethDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SettingsProvider>(context);
     var theme = Theme.of(context);
     var args = ModalRoute.of(context)!.settings.arguments as HadethData;
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
             image: AssetImage(
-              AppTheme.themeMode != ThemeMode.dark
-                  ? 'assets/images/default_bg.png'
-                  : 'assets/images/dark_bg.png',
+              provider.getMainBackground(),
             ),
             fit: BoxFit.fill),
       ),
@@ -40,7 +40,7 @@ class HadethDetails extends StatelessWidget {
             top: 40,
           ),
           decoration: BoxDecoration(
-            color: AppTheme.themeMode != ThemeMode.dark
+            color: provider.currentTheme != ThemeMode.dark
                 ? const Color(0xFFF8F8F8).withOpacity(0.75)
                 : const Color(0xFF141A2E).withOpacity(0.75),
             borderRadius: BorderRadius.circular(25),
@@ -55,7 +55,7 @@ class HadethDetails extends StatelessWidget {
                     Text(
                       args.title,
                       style: theme.textTheme.bodyMedium!.copyWith(
-                        color: AppTheme.themeMode != ThemeMode.dark
+                        color: provider.currentTheme != ThemeMode.dark
                             ? Colors.black
                             : theme.canvasColor,
                       ),
@@ -65,7 +65,7 @@ class HadethDetails extends StatelessWidget {
                     ),
                     Icon(
                       Icons.play_circle,
-                      color: AppTheme.themeMode != ThemeMode.dark
+                      color: provider.currentTheme != ThemeMode.dark
                           ? Colors.black
                           : theme.canvasColor,
                     ),
@@ -87,7 +87,7 @@ class HadethDetails extends StatelessWidget {
                     textDirection: TextDirection.rtl,
                     style: theme.textTheme.bodySmall!.copyWith(
                       fontWeight: FontWeight.bold,
-                      color: AppTheme.themeMode != ThemeMode.dark
+                      color: provider.currentTheme != ThemeMode.dark
                           ? Colors.black
                           : theme.canvasColor,
                     ),

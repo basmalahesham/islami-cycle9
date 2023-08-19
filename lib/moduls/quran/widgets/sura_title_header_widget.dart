@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SuraTitleHeaderWidget extends StatelessWidget {
   const SuraTitleHeaderWidget({super.key});
@@ -18,7 +19,7 @@ class SuraTitleHeaderWidget extends StatelessWidget {
           children: [
             Expanded(
               child: Text(
-                'رقم السورة',
+                AppLocalizations.of(context)!.sura_num,
                 textAlign: TextAlign.center,
                 style: theme.textTheme.bodyMedium,
               ),
@@ -30,7 +31,7 @@ class SuraTitleHeaderWidget extends StatelessWidget {
             ),
             Expanded(
               child: Text(
-                'اسم السورة',
+                AppLocalizations.of(context)!.sura_name,
                 textAlign: TextAlign.center,
                 style: theme.textTheme.bodyMedium,
               ),

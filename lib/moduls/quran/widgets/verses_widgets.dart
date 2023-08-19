@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../../../core/style/app_theme.dart';
+import '../../../provider/settings_provider.dart';
 
 class VersesWidgets extends StatelessWidget {
   String content;
@@ -10,6 +11,7 @@ class VersesWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SettingsProvider>(context);
     var theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.symmetric(
@@ -21,7 +23,7 @@ class VersesWidgets extends StatelessWidget {
         textDirection: TextDirection.rtl,
         style: theme.textTheme.bodySmall!.copyWith(
           fontWeight: FontWeight.bold,
-          color: AppTheme.themeMode != ThemeMode.dark
+          color: provider.currentTheme != ThemeMode.dark
               ? Colors.black
               : theme.canvasColor,
         ),

@@ -126,7 +126,9 @@ class _SebhaViewState extends State<SebhaView> {
 }*/
 
 import 'package:flutter/material.dart';
-import 'package:islami/core/style/app_theme.dart';
+import 'package:provider/provider.dart';
+
+import '../../provider/settings_provider.dart';
 
 class SebhaView extends StatefulWidget {
   @override
@@ -139,6 +141,7 @@ class _SebhaViewState extends State<SebhaView> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SettingsProvider>(context);
     var theme = Theme.of(context);
     return Center(
       child: Column(
@@ -153,7 +156,7 @@ class _SebhaViewState extends State<SebhaView> {
               Positioned(
                 top: -72,
                 child: Image.asset(
-                  AppTheme.themeMode != ThemeMode.dark
+                  provider.currentTheme != ThemeMode.dark
                       ? 'assets/images/head_sebha_logo.png'
                       : 'assets/images/head_sebha_dark.png',
                 ),
@@ -167,7 +170,7 @@ class _SebhaViewState extends State<SebhaView> {
                 child: Transform.rotate(
                   angle: angle,
                   child: Image.asset(
-                    AppTheme.themeMode != ThemeMode.dark
+                    provider.currentTheme != ThemeMode.dark
                         ? 'assets/images/body_sebha_logo.png'
                         : 'assets/images/body_sebha_dark.png',
                   ),
@@ -195,7 +198,7 @@ class _SebhaViewState extends State<SebhaView> {
             ),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: theme.primaryColor.withOpacity(0.8),
+                primary: theme.canvasColor,
               ),
               onPressed: () {
                 setState(() {
