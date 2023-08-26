@@ -136,8 +136,15 @@ class SebhaView extends StatefulWidget {
 }
 
 class _SebhaViewState extends State<SebhaView> {
-  int counterButton = 0;
   double angle = 0.0;
+  List<String> zekr = [
+    'سبحان الله',
+    'الحمد لله',
+    'لا اله الا الله',
+    'الله اكبر',
+  ];
+  int index = 0;
+  int counterButton = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -191,6 +198,19 @@ class _SebhaViewState extends State<SebhaView> {
             height: 20,
           ),
           Container(
+            padding: EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: theme.primaryColor.withOpacity(0.7),
+              borderRadius: BorderRadius.circular(22),
+            ),
+            child: Text(
+              '$counterButton',
+              style: theme.textTheme.bodyMedium!.copyWith(
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
+          /*Container(
             width: 69,
             height: 81,
             decoration: BoxDecoration(
@@ -212,20 +232,25 @@ class _SebhaViewState extends State<SebhaView> {
                 ),
               ),
             ),
-          ),
+          ),*/
           SizedBox(
             height: 20,
           ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: theme.canvasColor,
-            ),
-            padding: EdgeInsets.all(6),
-            child: Text(
-              'سبحان الله',
-              style: theme.textTheme.bodyMedium!.copyWith(
-                fontWeight: FontWeight.w400,
+          InkWell(
+            onTap: () {
+              zekrCounter();
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: theme.canvasColor,
+              ),
+              padding: EdgeInsets.all(6),
+              child: Text(
+                zekr[index],
+                style: theme.textTheme.bodyMedium!.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
               ),
             ),
           ),
@@ -234,9 +259,22 @@ class _SebhaViewState extends State<SebhaView> {
     );
   }
 
-/*decreasedAngle() {
+  /*decreasedAngle() {
     setState(() {
       angle++;
     });
   }*/
+
+  zekrCounter() {
+    angle += 0.1;
+    counterButton++;
+    if (counterButton == 33) {
+      index++;
+      counterButton = 0;
+    }
+    if (index > 3) {
+      index = 0;
+    }
+    setState(() {});
+  }
 }

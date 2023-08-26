@@ -13,20 +13,22 @@ import 'package:provider/provider.dart';
 void main() {
   runApp(
     ChangeNotifierProvider(
-      create: (context) => SettingsProvider(),
-      child: const MyApp(),
+      create: (context) => SettingsProvider()
+        ..getTheme()
+        ..getLanguage(),
+      child: MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   // This widget is the root of your application.
 
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<SettingsProvider>(context);
+    // provider.getLanguage();
+    // provider.getTheme();
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
