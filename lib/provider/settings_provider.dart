@@ -75,6 +75,12 @@ class SettingsProvider extends ChangeNotifier {
         : 'assets/images/default_bg.png';
   }
 
+  String getMainSplash() {
+    return currentTheme == ThemeMode.dark
+        ? 'assets/images/dark_splash.png'
+        : 'assets/images/splash.png';
+  }
+
   /*void changeLanguage(String newLang) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('language', newLang);
