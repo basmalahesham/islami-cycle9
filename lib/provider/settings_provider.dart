@@ -104,7 +104,7 @@ class SettingsProvider extends ChangeNotifier {
 
   getLanguage() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    currentLocal = prefs.getString('lang') ?? 'en';
+    currentLocal = prefs.getString('language') ?? 'en';
     notifyListeners();
   }
 }
